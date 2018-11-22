@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	
+	<settings>
+		<setting name="logImpl" value="STDOUT_LOGGING"/>
+	</settings>
+	
+	<!-- 取别名 -->
+	<typeAliases>
+		<typeAlias type="com.pojo.Classinfo" alias="cla"/>
+	</typeAliases>
+
+	<!-- 数据库环境 -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:oaec" />
+				<property name="username" value="bbs" />
+				<property name="password" value="bbs123" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="com/mapper/Classinfo.xml"/>
+		<mapper resource="com/mapper/Stuinfo.xml"/>
+	</mappers>
+</configuration>

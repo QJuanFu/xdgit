@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- <mapper namespace="com.mapper.classinfo">
+	<select id="queryClassinfo" resultType="com.pojo.Classinfo">
+		select * from classinfo
+	</select>
+</mapper> -->
+
+<!-- 用接口方式-->
+<mapper namespace="com.dao.IClassinfoDAO">
+	
+	<!-- 	查询 -->
+	<select id="selClassinfo" resultType="cla">
+		select * from classinfo
+	</select>
+	
+	<!-- 	添加 -->
+	<insert id="addClassinfo" parameterType="cla">
+		insert into classinfo values(seq_classinfo.nextval,#{c_name},#{c_major})
+	</insert>
+	
+	<!-- 	删除 -->
+	<delete id="delClassinfo" parameterType="int">
+		delete from classinfo where c_id=#{cid}
+	</delete>
+	
+	<!-- 	修改 -->
+	<update id="updClassinfo" parameterType="cla">
+		update classinfo set c_name=#{c_name},c_major=#{c_major} where c_id=#{c_id}
+	</update>
+	
+	<!-- 	查询某一班级信息 -->
+	<select id="selClassinfoById" parameterType="int" resultType="cla">
+		select * from classinfo where c_id=#{c_id}
+	</select>
+	
+</mapper>
