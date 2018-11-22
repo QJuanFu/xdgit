@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://www.springframework.org/schema/context 
+http://www.springframework.org/schema/context/spring-context.xsd 
+http://www.springframework.org/schema/mvc 
+http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+	<!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
+	<context:component-scan base-package="com" />
+
+	<!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix="/WEB-INF/jsp/" p:suffix=".jsp" />
+	<!-- 注解开关 -->
+	<mvc:annotation-driven />
+	<!-- 让springmvc放过对静态资源的拦截,过去版本写法 -->
+	<!-- <mvc:resources location="/js/" mapping="/js/**"></mvc:resources> -->
+	<!-- 不拦截静态资源 js，css，image不会被拦截 -->
+	<mvc:default-servlet-handler />
+
+	<!-- 文件上传设置 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="102400000"></property>
+	</bean>
+
+	<!-- 此为以后项目中的一个功能点配置，预留，与当前SSM整合无关 -->
+	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+		<!-- <property name="messageConverters"> -->
+		<!-- <list> -->
+		<!-- <ref bean="jsonConverter"/> -->
+		<!-- </list> -->
+		<!-- </property> -->
+	</bean>
+
+	<!-- 对josn数据的支持 spring5以上版本不需要配置以下 -->
+	<!-- <bean id="jsonConverter" -->
+	<!-- class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean> -->
+	<!-- <bean id="stringConverter" -->
+	<!-- class="org.springframework.http.converter.StringHttpMessageConverter"> -->
+	<!-- <property name="supportedMediaTypes"> -->
+	<!-- <list> -->
+	<!-- <value>text/plain;charset=UTF-8</value> -->
+	<!-- </list> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+	<!-- <bean -->
+	<!-- class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"> -->
+	<!-- <property name="messageConverters"> -->
+	<!-- <list> -->
+	<!-- <ref bean="stringConverter" /> -->
+	<!-- <ref bean="jsonConverter" /> -->
+	<!-- </list> -->
+	<!-- </property> -->
+	<!-- </bean> -->
+</beans>

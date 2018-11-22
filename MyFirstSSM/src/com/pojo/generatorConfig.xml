@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+  <context id="context1">
+    <jdbcConnection connectionURL="jdbc:oracle:thin:@localhost:1521:oaec" driverClass="oracle.jdbc.driver.OracleDriver" password="bbs123" userId="bbs" />
+    <javaModelGenerator targetPackage="com.pojo" targetProject="MyFirstSSM" />
+<!--     <sqlMapGenerator targetPackage="com.mapper" targetProject="MyBatis" /> -->
+<!--     <javaClientGenerator targetPackage="com.dao" targetProject="MyBatis" type="ANNOTATEDMAPPER" /> -->
+    <table schema="bbs" tableName="province"></table>
+  </context>
+</generatorConfiguration>

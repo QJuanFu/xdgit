@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dao.ISchoolDAO">
+	<insert id="addSchool" parameterType="com.pojo.School">
+		insert into school 
+		<trim prefix="(schoolid," suffix=")" suffixOverrides=",">
+			<if test="schoolname!=null">
+				schoolname,
+			</if>
+			<if test="schooladdress!=null">
+				schooladdress,
+			</if>
+			<if test="schoolcreatetime!=null">
+				schoolcreatetime,
+			</if>
+			<if test="schooltype!=null">
+				schooltype,
+			</if>
+		</trim>
+		<trim prefix=" values(seq_school.nextval," suffix=")" suffixOverrides=",">
+			<if test="schoolname!=null">
+				#{schoolname},
+			</if>
+			<if test="schooladdress!=null">
+				#{schooladdress},
+			</if>
+			<if test="schoolcreatetime!=null">
+				#{schoolcreatetime},
+			</if>
+			<if test="schooltype!=null">
+				#{schooltype},
+			</if>
+		</trim>
+	</insert>
+</mapper>
